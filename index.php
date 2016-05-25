@@ -86,7 +86,11 @@
 
         </div><!-- /.col-lg-6 -->
 
+
+
         <div id="registro" class="col-lg-offset-3 col-lg-6">
+
+        
             <?php include_once("mostrar.php") ?>
 
         </div>
