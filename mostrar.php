@@ -1,3 +1,14 @@
+<hr>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Publicacion</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    </thead>
+    <tbody>
+
 <?php
 
 try
@@ -11,44 +22,26 @@ try
 
         ?>
 
-   <!--     <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
+            <tr id="texto<?php echo $item['id'] ?>">
+
+                <td> <?php echo $item['nota'] ?> </td>
+                <td>
+                    <button class="btn btn-primary" onclick="Edit('<?php echo $item['id'] ?>','<?php echo $item['nota'] ?>')">Editar</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" onclick="Delete('<?php echo $item['id'] ?>')">Eliminar</button>
+                </td>
+
             </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Rocky</td>
-                <td>Balboa</td>
-                <td>rockybalboa@mail.com</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Peter</td>
-                <td>Parker</td>
-                <td>peterparker@mail.com</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>John</td>
-                <td>Rambo</td>
-                <td>johnrambo@mail.com</td>
-            </tr>
-            </tbody>
-        </table> -->
 
 
 
-        <div id="texto<?php echo $item['id'] ?>">
-            <?php echo $item['nota'] ?>
-            <a href="#" onclick="Edit('<?php echo $item['id'] ?>','<?php echo $item['nota'] ?>')">Editar</a>
-            <a href="#" onclick="Delete('<?php echo $item['id'] ?>')">Eliminar</a>
-        </div>
+
+      <!--  <div id="texto<?php //echo $item['id'] ?>">
+            <?php //echo $item['nota'] ?>
+            <a href="#" onclick="Edit('<?php //echo $item['id'] ?>','<?php //echo $item['nota'] ?>')">Editar</a>
+            <a href="#" onclick="Delete('<?php //echo $item['id'] ?>')">Eliminar</a>
+        </div>-->
 
 
 <?php
@@ -61,3 +54,7 @@ catch(PDOException $e) {
 }
 
 ?>
+
+
+    </tbody>
+</table>
