@@ -15,9 +15,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Practica de PHP + JSON + MYSQL + AJAX">
+    <meta name="author" content="Luis Solórzano">
     <title>Practica</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
