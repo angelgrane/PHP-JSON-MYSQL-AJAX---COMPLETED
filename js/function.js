@@ -16,8 +16,13 @@ function AddDatos() {
                 type:"POST",
                 data: { nota : nota },
                 success:function(data) {
-                    $("#nota").val("");
-                    Mostrar();
+                    var res = jQuery.parseJSON(data);
+                    if(res.error_msg != ""){
+                      // alert(res.error_msg);
+                    }else{
+                      $("#nota").val("");
+                      Mostrar();
+                    }
                 },
                 error:function(){
                     alert("error!!!!");
