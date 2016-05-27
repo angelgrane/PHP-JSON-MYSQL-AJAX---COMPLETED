@@ -15,7 +15,7 @@ if (isset($_POST['nota'])) {
 
             $sql = "INSERT INTO notas (nota) VALUES (:nota)";
             $q = $con->prepare($sql);
-            $q->execute(array('nota'=>$nota));
+            $q->execute(['nota'=>$nota]);
 
                 if($sql) {
                     $response["success"] = 1;

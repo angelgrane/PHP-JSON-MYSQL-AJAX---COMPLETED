@@ -18,7 +18,7 @@ function AddDatos() {
                 success:function(data) {
                     var res = jQuery.parseJSON(data);
                     if(res.error_msg != ""){
-                      // alert(res.error_msg);
+                       alert(res.error_msg);
                     }else{
                       $("#nota").val("");
                       Mostrar();
@@ -34,10 +34,15 @@ function AddDatos() {
                 type:"POST",
                 data: { id : idn , nota : nota },
                 success:function(data) {
-                    $("#datos").text("Guardar");
-                    $("#nota").val("");
-                    idn = 0;
-                    Mostrar();
+                    var res = jQuery.parseJSON(data);
+                    if(res.error_msg != ""){
+                        alert(res.error_msg);
+                    }else{
+                        $("#datos").text("Guardar");
+                        $("#nota").val("");
+                        idn = 0;
+                        Mostrar();
+                    }
                 },
                 error:function(){
                     alert("error!!!!");
@@ -73,8 +78,13 @@ function Delete(id)
         type:"POST",
         data: { id : id },
         success:function(data) {
-            $("#texto"+id).remove();
-            Mostrar();
+            var res = jQuery.parseJSON(data);
+            if(res.error_msg != ""){
+                alert(res.error_msg);
+            }else{
+                $("#texto"+id).remove();
+                Mostrar();
+            }
         },
         error:function(){
             alert("error!!!!");
