@@ -1,10 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Luis Sol�rzano
- * Date: 12/8/2015
- * Time: 8:02 AM
+ * User: Luis Solorzano
+ * Date: 05-23-16
+ * Time: 10:48 PM
  */
+
 
 $hostdb = 'localhost';
 $namedb = 'registro';

@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: luis
+ * User: Luis Solorzano
  * Date: 05-23-16
  * Time: 10:48 PM
  */
@@ -25,7 +25,7 @@
     <script src="js/jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="Mostrar()">
 
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
@@ -69,8 +69,19 @@
 
         <div id="registro" class="col-lg-offset-3 col-lg-6">
 
-        
-            <?php include_once("mostrar.php") ?>
+            <hr>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Publicacion</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                </thead>
+                    <tbody>
+
+                    </tbody>
+            </table>
 
         </div>
 

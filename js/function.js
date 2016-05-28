@@ -1,6 +1,7 @@
 /**
- * Created by luis on 05-23-16.
+ * Created by Luis Solorzano on 05-23-16.
  */
+
 var idn = 0;
 function AddDatos() {
     var nota = $("#nota").val();
@@ -57,9 +58,18 @@ function Mostrar() {
     $.ajax({
         url: 'mostrar.php',
         cache: false,
-        type: "GET",
-        success: function(datos){
-            $("#registro").html(datos);
+        type: "POST",
+    }).done(function(data){
+        var datos = JSON.parse(data);
+        $("table tbody tr").remove();
+
+        for(var i in datos){
+            var dat = "'"+datos[i].nota+"'";
+            $("table tbody").append('<tr id="texto'+datos[i].id+'">'+
+                '<td>'+datos[i].nota+'</td>'+
+                '<td><button class="btn btn-primary"' +'onclick="Edit('+datos[i].id+','+dat+')">Editar</button></td>'+
+                '<td><button class="btn btn-danger"'+ 'onclick="Delete('+datos[i].id+')">Eliminar</button></td></tr>'
+            );
         }
     });
 }
