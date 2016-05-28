@@ -1,10 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: luis
+ * User: Luis Solorzano
  * Date: 05-23-16
- * Time: 11:11 PM
+ * Time: 10:48 PM
  */
+
 if (isset($_POST['nota'])) {
     $nota = $_POST['nota'];
 
