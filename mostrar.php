@@ -13,7 +13,7 @@ try
 {
     include "conexion.php";
 
-    $sql2 = "SELECT * FROM notas";
+    $sql2 = "SELECT * FROM notas ORDER BY id DESC ";
     $result = $con->query($sql2);
     $datos = [];
 
