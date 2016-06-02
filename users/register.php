@@ -23,6 +23,7 @@ try {
 
     if($sql) {
         $response["success"] = 1;
+        $_SESSION['user'] = $nombre;
         echo json_encode($response);
     }else{
         $response["error"] = 4;

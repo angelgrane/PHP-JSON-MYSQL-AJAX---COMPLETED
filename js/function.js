@@ -13,7 +13,7 @@ function AddDatos() {
         if (boton == "Guardar") {
     
             $.ajax({
-                url: "insertar.php",
+                url: "notas/insertar.php",
                 type:"POST",
                 data: { nota : nota },
                 success:function(data) {
@@ -31,7 +31,7 @@ function AddDatos() {
             });
         } else if (boton == "Actualizar") {
             $.ajax({
-                url: "update.php",
+                url: "notas/update.php",
                 type:"POST",
                 data: { id : idn , nota : nota },
                 success:function(data) {
@@ -56,7 +56,7 @@ function AddDatos() {
 function Mostrar() {
 
     $.ajax({
-        url: 'mostrar.php',
+        url: 'notas/mostrar.php',
         cache: false,
         type: "POST",
     }).done(function(data){
@@ -84,7 +84,7 @@ function Edit(id, nota) {
 function Delete(id) 
 {
     $.ajax({
-        url: "delete.php",
+        url: "notas/delete.php",
         type:"POST",
         data: { id : id },
         success:function(data) {
@@ -100,4 +100,32 @@ function Delete(id)
             alert("error!!!!");
         }
     });
+}
+
+function addUser() {
+    var nombre = $("#nombre").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    if (nombre == ""  && email == "" && password == "") {
+        alert("Debe llenas todos los campos...")
+    } else {
+
+        $.ajax({
+            url: "users/login.php",
+            type:"POST",
+            data: { id : id },
+            success:function(data) {
+                var res = jQuery.parseJSON(data);
+                if(res.error_msg != ""){
+                    alert(res.error_msg);
+                }else{
+                    window.location = "notas/index.php";
+                }
+            },
+            error:function(){
+                alert("error!!!!");
+            }
+        });
+    }
 }
