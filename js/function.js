@@ -13,7 +13,7 @@ function AddDatos() {
         if (boton == "Guardar") {
     
             $.ajax({
-                url: "notas/insertar.php",
+                url: "../notas/insertar.php",
                 type:"POST",
                 data: { nota : nota },
                 success:function(data) {
@@ -31,7 +31,7 @@ function AddDatos() {
             });
         } else if (boton == "Actualizar") {
             $.ajax({
-                url: "notas/update.php",
+                url: "../notas/update.php",
                 type:"POST",
                 data: { id : idn , nota : nota },
                 success:function(data) {
@@ -56,7 +56,7 @@ function AddDatos() {
 function Mostrar() {
 
     $.ajax({
-        url: 'notas/mostrar.php',
+        url: '../notas/mostrar.php',
         cache: false,
         type: "POST",
     }).done(function(data){
@@ -84,7 +84,7 @@ function Edit(id, nota) {
 function Delete(id) 
 {
     $.ajax({
-        url: "notas/delete.php",
+        url: "../notas/delete.php",
         type:"POST",
         data: { id : id },
         success:function(data) {
@@ -102,29 +102,56 @@ function Delete(id)
     });
 }
 
-function addUser() {
-    var nombre = $("#nombre").val();
+function iLogin() {
     var email = $("#email").val();
     var password = $("#password").val();
 
-    if (nombre == ""  && email == "" && password == "") {
-        alert("Debe llenas todos los campos...")
+    if (email == "" || password == "") {
+        alert("Debe llenas todos los campos. 2..")
     } else {
 
         $.ajax({
-            url: "users/login.php",
+            url: "../users/login.php",
             type:"POST",
-            data: { id : id },
+            data: { email: email, password: password },
             success:function(data) {
                 var res = jQuery.parseJSON(data);
                 if(res.error_msg != ""){
                     alert(res.error_msg);
                 }else{
-                    window.location = "notas/index.php";
+                    window.location = "../notas/index.php";
                 }
             },
             error:function(){
                 alert("error!!!!");
+            }
+        });
+    }
+}
+
+function addUser() {
+    var nombre = $("#nombre").val();
+    var correo = $("#email2").val();
+    var passw = $("#password2").val();
+
+    if (nombre == ""  || correo == "" || passw == "") {
+        alert("Debe llenas todos los campos...")
+    } else {
+
+        $.ajax({
+            url: "../users/register.php",
+            type:"POST",
+            data: { nombre : nombre, correo: correo, passw: passw },
+            success:function(data) {
+                var res = jQuery.parseJSON(data);
+                if(res.error_msg != ""){
+                    alert(res.error_msg);
+                }else{
+                    window.location = "../notas/index.php";
+                }
+            },
+            error:function(data){
+                alert("error");
             }
         });
     }

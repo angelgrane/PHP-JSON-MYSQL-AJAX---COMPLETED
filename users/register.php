@@ -8,25 +8,43 @@
 ?>
 
 <?php
+session_start();
 
 try {
-    include 'conexion.php';
+    include '../conexion.php';
 
     $response = ["success" => 0, "error" => 0, "error_msg" => ""];
-    $nombre = $_POST['name'];
-    $correo = $_POST['email'];
-    $password = $_POST['password'];
 
-    $sql = "INSERT INTO notas (nombre, email, password) VALUES (:n, :cr, :ps)";
-    $q = $con->prepare($sql);
-    $q->execute(['n'=>$nombre, 'cr'=>$correo,'ps'=>$password]);
+    $sql3 = $con->prepare("SELECT * FROM users WHERE correo=:correo");
+    $sql3->execute([':correo'=>$_POST['correo']]);
+    if ($sql3) {
+        echo'<script> alert("El correo electronico ya existe..."); </script>';
+    }
+
+    while ($item = $sql2->fetch(PDO::FETCH_ASSOC)) {
+        $_SESSION['id'] = $item['id'];
+        $_SESSION['users'] = $item['nombre'];
+    }
+
+    $sql = $con->prepare('INSERT INTO users (nombre, correo, clave) VALUES(:nombre, :correo, :clave)');
+    $sql->execute([':nombre'=>$_POST['nombre'], ':correo'=>$_POST['correo'], ':clave'=>md5($_POST['passw'])]);
 
     if($sql) {
+
+        $sql2 = $con->prepare("SELECT * FROM users WHERE correo=:correo");
+        $sql2->execute([':correo'=>$_POST['correo']]);
+
+        while ($item = $sql2->fetch(PDO::FETCH_ASSOC)) {
+            $_SESSION['id'] = $item['id'];
+            $_SESSION['users'] = $item['nombre'];
+        }
+
         $response["success"] = 1;
-        $_SESSION['user'] = $nombre;
         echo json_encode($response);
+
     }else{
-        $response["error"] = 4;
+        echo  "error..";
+       $response["error"] = 4;
         $response["error_msg"] = "Ocurrio un error al guardar el dato...";
         echo json_encode($response);
     }

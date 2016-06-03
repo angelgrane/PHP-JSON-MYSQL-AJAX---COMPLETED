@@ -7,7 +7,7 @@
  */
 
 try {
-    include 'conexion.php';
+    include '../conexion.php';
 
     $response = ["success" => 0, "error" => 0, "error_msg" => ""];
     $idn = $_POST['id'];
