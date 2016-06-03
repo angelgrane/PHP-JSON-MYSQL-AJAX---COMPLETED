@@ -24,24 +24,43 @@ SET time_zone = "+00:00";
 CREATE DATABASE registro;
 USE registro;
 
---
--- Estructura de tabla para la tabla `notas`
---
-
 CREATE TABLE IF NOT EXISTS `notas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nota` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+  `id_user` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=114 ;
 
 --
 -- Volcado de datos para la tabla `notas`
 --
 
-INSERT INTO `notas` (`id`, `nota`) VALUES
-(2, 'jose tita'),
-(18, 'david paredes'),
-(29, 'josseling');
+INSERT INTO `notas` (`id`, `nota`, `id_user`) VALUES
+  (111, 'hola', 15),
+  (113, 'hay que bañarse', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `correo` varchar(150) NOT NULL,
+  `clave` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `nombre`, `correo`, `clave`) VALUES
+  (1, 'Luis Solórzano', 'luisnic20@gmail.com', '202cb962ac59075b964b07152d234b70'),
+  (15, 'mxa', 'maxs', '202cb962ac59075b964b07152d234b70');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
